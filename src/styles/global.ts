@@ -35,10 +35,26 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    cursor: pointer;
-  }
+    width: 100%;
+    height: 3.375rem;
+    
+    margin: auto;
 
-  a {
-    text-decoration: none;
+    border: 0;
+    border-radius: 0.6rem;
+
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--gray-50);
+    
+    background: var(--blue-800);
+    
+    cursor: pointer;
+
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: brightness(0.8);  
+    }
   }
 `;

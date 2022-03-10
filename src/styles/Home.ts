@@ -43,10 +43,13 @@ export const FormContainer = styled.form`
     margin-bottom: 0.4rem;
   }
 
+  label:nth-of-type(2) {
+    margin-top: 1.8rem;
+  }
+
   input {
     height: 3.4rem;
 
-    margin-bottom: 1.8rem;
     padding: 1rem;
 
     font-size: 1rem;
@@ -55,15 +58,23 @@ export const FormContainer = styled.form`
 
     border: 0;
     border-radius: 0.5rem;
+    outline-color: var(--blue-800);
 
     &::placeholder {
       color: var(--gray-200);
     }
   }
 
+  span {
+    padding: 0.5rem 0 0 0;
+
+    font-size: 0.9rem;
+    color: red;
+  }
+
   button {
     font-size: 1.1rem;
 
-    margin: 0.5rem 0 1.675rem 0;
+    margin: 2rem 0 0.5rem 0;
   }
 `;

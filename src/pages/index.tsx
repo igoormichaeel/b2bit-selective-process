@@ -1,26 +1,37 @@
+import * as yup from 'yup';
 import Head from 'next/head';
 import Router from 'next/router';
 import type { NextPage } from 'next';
-import { FormEvent, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Container, FormContainer, Logo, Main } from '../styles/Home';
 
-const Home: NextPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+type SignInFormData = {
+  email?: string;
+  password?: string;
+};
 
-  function handleSubmit(event: FormEvent) {
-    event.preventDefault();
+const signInFormSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required('Email is required')
+    .email('Must be a valid email'),
+  password: yup.string().required('Password is required'),
+});
 
-    const data = {
-      email,
-      password,
-    };
+const SignIn: NextPage = () => {
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(signInFormSchema),
+  });
 
-    console.log(data);
+  const { errors } = formState;
+
+  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
+    // await new Promise((resolve) => setTimeout(resolve, 500));
 
     Router.push('/dashboard');
-  }
+  };
 
   return (
     <>
@@ -32,24 +43,25 @@ const Home: NextPage = () => {
         <Container>
           <Logo src="/assets/images/logo.png" alt="Logo" />
 
-          <FormContainer onSubmit={handleSubmit}>
+          <FormContainer onSubmit={handleSubmit(handleSignIn)}>
             <label htmlFor="email">E-mail</label>
             <input
               type="email"
               id="email"
               placeholder="@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register('email')}
             />
+            {errors?.email && <span>{errors.email.message}</span>}
 
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               placeholder="****************"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              aria-errormessage={errors.password}
+              {...register('password')}
             />
+            {errors?.password && <span>{errors.password.message}</span>}
 
             <button type="submit">Sign In</button>
           </FormContainer>
@@ -59,4 +71,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default SignIn;

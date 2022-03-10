@@ -38,13 +38,14 @@ export const Container = styled.div`
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.16);
 
   p {
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
   }
 `;
 
-export const ProfilePicture = styled.img`
-  width: 4rem;
+export const Avatar = styled.img`
+  max-width: 310px;
+  width: 80%;
 
   display: block;
 
@@ -53,7 +54,6 @@ export const ProfilePicture = styled.img`
 
 export const ProfileInfos = styled.div`
   p {
-    font-size: 1rem;
     text-align: left;
 
     margin-bottom: 0.4rem;

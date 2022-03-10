@@ -2,9 +2,11 @@ import * as yup from 'yup';
 import Head from 'next/head';
 import Router from 'next/router';
 import type { NextPage } from 'next';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useContext, useEffect } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { AuthContext } from '../contexts/AuthContext';
 import { Container, FormContainer, Logo, Main } from '../styles/Home';
 
 type SignInFormData = {
@@ -21,16 +23,24 @@ const signInFormSchema = yup.object().shape({
 });
 
 const SignIn: NextPage = () => {
+  useEffect(() => {
+    const access = localStorage.getItem('access');
+
+    if (access) {
+      Router.push('/dashboard');
+    }
+  }, []);
+
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema),
   });
 
   const { errors } = formState;
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
-    // await new Promise((resolve) => setTimeout(resolve, 500));
+  const { signIn } = useContext(AuthContext);
 
-    Router.push('/dashboard');
+  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
+    await signIn(data);
   };
 
   return (

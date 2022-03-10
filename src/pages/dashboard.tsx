@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import Router from 'next/router';
+import { useContext } from 'react';
+
+import { AuthContext } from '../contexts/AuthContext';
 
 import {
   Container,
   Header,
   Main,
   ProfileInfos,
-  ProfilePicture,
+  Avatar,
 } from '../styles/Dashboard';
 
 export default function Dashboard() {
-  function signOut() {
-    Router.push('/');
-  }
+  const { user, signOut } = useContext(AuthContext);
 
   return (
     <>
@@ -29,18 +29,18 @@ export default function Dashboard() {
       <Main>
         <Container>
           <p>Profile picture</p>
-          <ProfilePicture src="assets/images/profile-pic.png" />
+          <Avatar src={user?.avatarUrl} />
 
           <ProfileInfos>
             <p>
               Your <strong>Name</strong>
             </p>
-            <span>Chistine James</span>
+            <span>{user?.name}</span>
 
             <p>
               Your <strong>E-mail</strong>
             </p>
-            <span>chistinejames@gmail.com</span>
+            <span>{user?.email}</span>
           </ProfileInfos>
         </Container>
       </Main>

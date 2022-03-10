@@ -1,9 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     --gray-50: #fafafa;
     --gray-100: #f1f1f1;
+    --gray-200: #afafaf;
     --gray-800: #262626;
 
     --blue-50: #f1f5f9;
@@ -31,7 +32,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4, h5, h6, strong {
-    font-weight: 600;
+    font-weight: 700;
   }
 
   button {
@@ -43,10 +44,10 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
     border-radius: 0.6rem;
 
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     color: var(--gray-50);
-    
+
     background: var(--blue-800);
     
     cursor: pointer;

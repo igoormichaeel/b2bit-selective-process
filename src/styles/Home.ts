@@ -4,22 +4,21 @@ export const Main = styled.main`
   width: 100vw;
   height: 100vh;
 
-  background: var(--gray-50);
-
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: var(--gray-50);
 `;
 
 export const Container = styled.div`
   max-width: 438px;
   width: 90%;
-  height: 534px;
 
   padding: 2.5rem 1.6rem;
 
   background: #fff;
-  border-radius: 2.2rem;
+  border-radius: 1.2rem;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.21);
 
   display: flex;
@@ -38,9 +37,10 @@ export const FormContainer = styled.form`
   flex-direction: column;
 
   label {
+    font-size: 1.1rem;
     font-weight: 700;
 
-    margin-bottom: 0.9rem;
+    margin-bottom: 0.4rem;
   }
 
   input {
@@ -54,10 +54,16 @@ export const FormContainer = styled.form`
     background: var(--gray-100);
 
     border: 0;
-    border-radius: 0.875rem;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+      color: var(--gray-200);
+    }
   }
 
   button {
-    margin-top: 0.5rem;
+    font-size: 1.1rem;
+
+    margin: 0.5rem 0 1.675rem 0;
   }
 `;

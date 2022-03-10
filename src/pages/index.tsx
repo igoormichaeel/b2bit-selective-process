@@ -1,9 +1,9 @@
 import Head from 'next/head';
+import Router from 'next/router';
 import type { NextPage } from 'next';
+import { FormEvent, useState } from 'react';
 
 import { Container, FormContainer, Logo, Main } from '../styles/Home';
-import { FormEvent, useState } from 'react';
-import Router from 'next/router';
 
 const Home: NextPage = () => {
   const [email, setEmail] = useState('');
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <title>SignIn | b2bit</title>
       </Head>
 
-      <Main>
+      <Main theme={{ bg: '--gray-50' }}>
         <Container>
           <Logo src="/assets/images/logo.png" alt="Logo" />
 
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             <input
               type="password"
               id="password"
-              placeholder="************"
+              placeholder="****************"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

@@ -136,8 +136,7 @@ export function AuthProvider({ children }: AuthPropviderProps) {
 
       authChannel.postMessage('signIn');
     } catch (error) {
-      // tratar erro (colocar aquele pop-up do toastfy)
-      console.log(error);
+      // console.log(error);
     }
   }
 

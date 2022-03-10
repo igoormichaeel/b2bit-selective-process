@@ -75,6 +75,7 @@ export function AuthProvider({ children }: AuthPropviderProps) {
           break;
         case 'signIn':
           Router.push('/dashboard');
+          Router.reload();
           break;
         default:
           break;
